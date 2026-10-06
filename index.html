@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>志盛科技 · 工具下载验证站</title>
+
+<!-- SECTION: config 后台管理写入区：文件内置默认配置（JSON） -->
+<script id="site-config" type="application/json">{
+  "meta": {
+    "rev": 1791290505591,
+    "pageTitle": "志盛科技 · 工具下载验证站",
+    "shopName": "志盛科技",
+    "subtitle": "工具正版验证 · 永久免费更新",
+    "footer": "© 2026 志盛科技 验证系统",
+    "adminEnabled": false,
+    "passB64": "enM4ODg4",
+    "passHash": 0,
+    "newPass": ""
+  },
+  "counters": {
+    "visitBase": 1036,
+    "downloadBase": 345
+  },
+  "notice": {
+    "enabled": true,
+    "lines": [
+      "公告：本网站和兑换码务必留好，这是唯一永久免费包更新凭证。",
+      "注意切记：请勿将卡密分享或泄露给他人导致 ip 被封禁，失去宏功能和更新服务，得不偿失！"
+    ]
+  },
+  "maintenance": {
+    "enabled": false,
+    "text": "工具正在更新维护，暂停下载，请稍后再来。"
+  },
+  "contact": {
+    "service": "QQ3943232997",
+    "group": "1035667400",
+    "online": "https://docs.qq.com/doc/DUG5qRm1sS1d5TkVQ"
+  },
+  "tools": [
+    {
+      "name": "Todesk 远程下载",
+      "action": "link",
+      "url": "https://dl.todesk.com/windows/ToDesk_Lite.exe"
+    },
+    {
+      "name": "bandizip",
+      "action": "link",
+      "url": "https://www.bandisoft.com/bandizip/dl.php?web"
+    },
+    {
+      "name": "geek 卸载工具",
+      "action": "link",
+      "url": "https://v.v8l.cn/s/Vf2Jmxo"
+    },
+    {
+      "name": "正版验证",
+      "action": "link",
+      "url": "https://docs.qq.com/doc/DUG5qRm1sS1d5TkVQ"
+    }
+  ],
+  "products": [
+    {
+      "id": "p1",
+      "name": "普通精调密集版",
+      "desc": "已更新真随机弹道数据",
+      "icon": "mouse",
+      "version": "v1.19",
+      "updated": "2026-9-5",
+      "expire": "2027-09-09",
+      "url": "https://v.v8l.cn/s/BJWBxZ3",
+      "codes": [
+        {
+          "code": "ZSa3K9xR2mP7",
+          "expire": "2027-09-21"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "name": "定制密集高级版",
+      "desc": "闲鱼收货好评后免费送定制版兑换码！",
+      "icon": "shield",
+      "version": "v1.8",
+      "updated": "2026-09-28",
+      "expire": "2027-09-21",
+      "url": "https://v.v8l.cn/s/Q6efDKo",
+      "codes": [
+        {
+          "code": "ZSQ8vL5nB1wY",
+          "expire": ""
+        }
+      ],
+      "btnText": "立即下载（闲鱼收货好评后免费送定制版兑换码！）"
+    }
+  ]
+}</script>
+
+<style>
+/* SECTION: base */
+:root{
+  --bg:#08080a; --panel:#101014; --panel-2:#16161c;
+  --line:rgba(212,175,55,.28); --line-soft:rgba(212,175,55,.14);
+  --gold:#d4af37; --gold-hi:#f2d77a; --gold-dim:#9c7f2c;
+  --text:#eae6da; --text-dim:#9a958a;
+  --green:#2ecc8f; --red:#ff5d5d; --radius:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:
+    radial-gradient(1200px 500px at 50% -10%, rgba(212,175,55,.07), transparent 60%),
+    radial-gradient(800px 400px at 85% 110%, rgba(212,175,55,.05), transparent 60%),
+    var(--bg);
+  color:var(--text);
+  font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;
+  min-height:100vh;display:flex;align-items:flex-start;justify-content:center;
+  padding:48px 16px 64px;
+}
+.wrap{width:100%;max-width:980px}
+.card{
+  background:linear-gradient(180deg,var(--panel-2),var(--panel));
+  border:1px solid var(--line-soft);border-radius:var(--radius);
+  box-shadow:0 24px 60px rgba(0,0,0,.55), inset 0 1px 0 rgba(242,215,122,.06);
+  overflow:hidden;
+}
+
+/* SECTION: header */
+header{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  padding:18px 24px;border-bottom:1px solid var(--line-soft);
+  background:linear-gradient(90deg, rgba(212,175,55,.06), transparent 55%);
+}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand-mark{
+  width:38px;height:38px;flex:none;border-radius:10px;
+  background:linear-gradient(135deg,#1b1b21,#0c0c0f);border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--gold-hi);font-weight:800;font-size:17px;box-shadow:0 0 18px rgba(212,175,55,.18);
+}
+.brand-name{font-size:17px;font-weight:700;letter-spacing:.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand-name em{font-style:normal;color:var(--gold-hi)}
+.brand-sub{font-size:12px;color:var(--text-dim);margin-top:2px}
+.stats{display:flex;align-items:center;gap:18px;flex-wrap:wrap;font-size:13px}
+.stat{display:flex;align-items:center;gap:6px;color:var(--text-dim)}
+.stat b{color:var(--gold-hi);font-weight:700;font-variant-numeric:tabular-nums}
+.stat svg{width:15px;height:15px;stroke:var(--gold-dim)}
+.links{display:flex;gap:14px;flex-wrap:wrap;font-size:13px}
+.links a{color:var(--gold);text-decoration:none;display:flex;align-items:center;gap:5px;padding:4px 2px;cursor:pointer}
+.links a:hover{color:var(--gold-hi);text-shadow:0 0 12px rgba(212,175,55,.5)}
+.links svg{width:14px;height:14px;stroke:currentColor}
+.links a.admin-entry{color:var(--gold-dim);border:1px dashed var(--line-soft);border-radius:7px;padding:3px 9px}
+
+/* SECTION: notice & maintenance */
+.notice{margin:18px 24px 0;border:1px solid var(--line-soft);border-left:3px solid var(--gold);border-radius:10px;background:rgba(212,175,55,.045);padding:14px 18px}
+.notice p{font-size:13.5px;line-height:1.9;color:#cfc9ba}
+.notice p strong{color:var(--gold-hi);font-weight:700}
+.maint{
+  margin:18px 24px 0;border:1px solid rgba(255,93,93,.45);border-left:3px solid var(--red);
+  border-radius:10px;background:rgba(255,93,93,.07);padding:13px 18px;
+  font-size:13.5px;color:#ffc9c9;display:flex;align-items:center;gap:9px;
+}
+.maint svg{width:17px;height:17px;stroke:var(--red);flex:none}
+
+/* SECTION: tools */
+.tools{display:flex;gap:12px;flex-wrap:wrap;margin:20px 24px 0}
+.tool-btn{
+  appearance:none;cursor:pointer;
+  background:linear-gradient(180deg,#191920,#101015);border:1px solid var(--line);
+  color:var(--gold-hi);font-size:13.5px;font-weight:600;font-family:inherit;
+  padding:10px 18px;border-radius:9px;display:inline-flex;align-items:center;gap:7px;
+  transition:box-shadow .2s, transform .2s, border-color .2s;
+}
+.tool-btn:hover{box-shadow:0 0 20px rgba(212,175,55,.25);border-color:var(--gold);transform:translateY(-1px)}
+.tool-btn svg{width:14px;height:14px;stroke:currentColor}
+
+/* SECTION: products */
+.hint{text-align:center;color:var(--text-dim);font-size:13.5px;margin:26px 24px 0;letter-spacing:1px}
+.hint::before,.hint::after{content:"—";color:var(--gold-dim);margin:0 10px}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:18px;margin:18px 24px 0}
+.product{
+  background:linear-gradient(180deg,#131318,#0d0d11);border:1px solid var(--line-soft);
+  border-radius:12px;padding:26px 22px 24px;text-align:center;position:relative;
+  transition:border-color .25s, box-shadow .25s;
+}
+.product:hover{border-color:var(--line);box-shadow:0 12px 34px rgba(0,0,0,.5),0 0 24px rgba(212,175,55,.08)}
+.prod-icon{
+  width:56px;height:56px;margin:0 auto 14px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, rgba(242,215,122,.22), rgba(212,175,55,.05) 65%);
+  border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
+}
+.prod-icon svg{width:26px;height:26px;stroke:var(--gold-hi)}
+.prod-name{font-size:16px;font-weight:700;color:var(--gold-hi);letter-spacing:.5px}
+.prod-desc{font-size:12.5px;color:var(--text-dim);margin:7px 0 12px}
+.ver-badge{
+  display:inline-block;font-size:11.5px;color:var(--gold);border:1px solid var(--line-soft);
+  border-radius:999px;padding:3px 12px;margin-bottom:18px;letter-spacing:.4px;
+  background:rgba(212,175,55,.05);font-variant-numeric:tabular-nums;
+}
+.dl-btn{
+  appearance:none;cursor:pointer;width:100%;max-width:280px;font-family:inherit;
+  font-size:14px;font-weight:700;color:#1a1408;
+  background:linear-gradient(90deg,var(--gold),var(--gold-hi));border:none;border-radius:999px;
+  padding:12px 18px;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  box-shadow:0 6px 22px rgba(212,175,55,.32);transition:filter .2s, transform .2s;
+}
+.dl-btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.dl-btn:disabled{background:linear-gradient(90deg,#3a3a42,#4a4a52);color:#8f8f97;box-shadow:none;cursor:not-allowed;transform:none;filter:none}
+.dl-btn svg{width:15px;height:15px;stroke:currentColor}
+
+footer{text-align:center;color:#5c584e;font-size:12.5px;padding:30px 24px 26px;letter-spacing:1px}
+
+/* SECTION: modal */
+.overlay{position:fixed;inset:0;background:rgba(4,4,6,.78);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:20px;z-index:50}
+.overlay.open{display:flex}
+.modal{
+  width:100%;max-width:420px;position:relative;
+  background:linear-gradient(180deg,#17171d,#0e0e12);border:1px solid var(--line);
+  border-radius:16px;padding:34px 30px 30px;
+  box-shadow:0 30px 80px rgba(0,0,0,.7),0 0 40px rgba(212,175,55,.1);
+  animation:pop .22s ease-out;
+}
+@keyframes pop{from{transform:translateY(14px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+.modal-close{position:absolute;top:14px;right:16px;background:none;border:none;cursor:pointer;color:var(--text-dim);font-size:20px;line-height:1;padding:6px}
+.modal-close:hover{color:var(--gold-hi)}
+.modal h3{font-size:19px;text-align:center;color:var(--gold-hi);letter-spacing:1px}
+.modal .ver{text-align:center;font-size:12.5px;color:var(--text-dim);margin:8px 0 22px}
+.modal .ver b{color:var(--gold);font-weight:600}
+.code-input{
+  width:100%;background:#0a0a0d;border:1px solid var(--line-soft);border-radius:10px;
+  color:var(--text);font-size:16px;letter-spacing:2px;padding:13px 16px;
+  font-family:Consolas,Menlo,monospace;outline:none;transition:border-color .2s, box-shadow .2s;
+}
+.code-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,175,55,.12)}
+.code-input.err{border-color:var(--red);box-shadow:0 0 0 3px rgba(255,93,93,.12)}
+.verify-btn,.ghost-btn{
+  appearance:none;cursor:pointer;width:100%;margin-top:14px;font-family:inherit;
+  font-size:15px;font-weight:700;letter-spacing:2px;color:#1a1408;
+  background:linear-gradient(90deg,var(--gold),var(--gold-hi));border:none;border-radius:10px;padding:13px 0;
+  box-shadow:0 6px 20px rgba(212,175,55,.3);transition:filter .2s;
+}
+.verify-btn:hover,.ghost-btn:hover{filter:brightness(1.08)}
+.msg{min-height:22px;text-align:center;font-size:13.5px;margin-top:14px;font-weight:600}
+.msg.ok{color:var(--green)}
+.msg.bad{color:var(--red)}
+.unlock{display:none;margin-top:6px;padding:18px 16px 16px;text-align:center;background:rgba(46,204,143,.06);border:1px solid rgba(46,204,143,.35);border-radius:12px}
+.unlock.show{display:block;animation:pop .25s ease-out}
+.unlock .dl-final{
+  appearance:none;cursor:pointer;font-family:inherit;font-size:15px;font-weight:700;color:#04150d;
+  background:linear-gradient(90deg,#1db57c,var(--green));border:none;border-radius:999px;padding:12px 30px;
+  display:inline-flex;align-items:center;gap:8px;box-shadow:0 6px 22px rgba(46,204,143,.35);transition:filter .2s;
+}
+.unlock .dl-final:hover{filter:brightness(1.08)}
+.unlock .dl-final svg{width:15px;height:15px;stroke:currentColor}
+.unlock .meta{font-size:12.5px;color:#8fb8a4;margin-top:12px}
+.unlock .meta b{color:var(--green);font-weight:600}
+
+/* SECTION: toast */
+.toast{
+  position:fixed;left:50%;bottom:36px;transform:translateX(-50%) translateY(16px);
+  background:#1a1a20;border:1px solid var(--line);color:var(--gold-hi);
+  font-size:13.5px;padding:11px 22px;border-radius:999px;opacity:0;pointer-events:none;
+  transition:opacity .25s, transform .25s;z-index:70;max-width:86vw;text-align:center;
+  box-shadow:0 12px 30px rgba(0,0,0,.5);
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* SECTION: admin */
+.admin-overlay{position:fixed;inset:0;background:rgba(4,4,6,.85);backdrop-filter:blur(5px);display:none;z-index:80;overflow-y:auto;padding:30px 14px}
+.admin-overlay.open{display:block}
+.admin-panel{max-width:780px;margin:0 auto;background:linear-gradient(180deg,#17171d,#0e0e12);border:1px solid var(--line);border-radius:16px;padding:26px 26px 30px;box-shadow:0 30px 80px rgba(0,0,0,.7)}
+.admin-panel h2{color:var(--gold-hi);font-size:18px;letter-spacing:1px;display:flex;align-items:center;gap:9px;margin-bottom:6px}
+.admin-panel h2 svg{width:19px;height:19px;stroke:var(--gold-hi)}
+.admin-tip{font-size:12.5px;color:var(--text-dim);line-height:1.7;margin-bottom:18px;background:rgba(212,175,55,.05);border:1px solid var(--line-soft);border-radius:9px;padding:10px 14px}
+.admin-tip b{color:var(--gold)}
+.agroup{border:1px solid var(--line-soft);border-radius:12px;padding:16px 16px 14px;margin-bottom:16px}
+.agroup h3{font-size:14px;color:var(--gold);letter-spacing:1px;margin-bottom:12px;display:flex;align-items:center;gap:7px}
+.frow{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.fitem{flex:1;min-width:170px}
+.fitem label{display:block;font-size:12px;color:var(--text-dim);margin-bottom:5px}
+.field{
+  width:100%;background:#0a0a0d;border:1px solid var(--line-soft);border-radius:8px;
+  color:var(--text);font-size:13.5px;padding:9px 11px;outline:none;font-family:inherit;
+}
+.field:focus{border-color:var(--gold)}
+textarea.field{resize:vertical;line-height:1.7}
+.check{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--text);cursor:pointer;padding:4px 0}
+.check input{accent-color:var(--gold);width:15px;height:15px;cursor:pointer}
+.mini-btn{
+  appearance:none;cursor:pointer;font-family:inherit;font-size:12.5px;font-weight:600;
+  background:transparent;border:1px solid var(--line);color:var(--gold-hi);
+  border-radius:7px;padding:6px 13px;transition:box-shadow .2s;
+}
+.mini-btn:hover{box-shadow:0 0 12px rgba(212,175,55,.25)}
+.mini-btn.danger{border-color:rgba(255,93,93,.5);color:var(--red)}
+.item-row{border:1px dashed var(--line-soft);border-radius:9px;padding:12px;margin-bottom:10px;position:relative}
+.item-row .rm{position:absolute;top:8px;right:8px;background:none;border:none;color:var(--red);cursor:pointer;font-size:15px}
+.admin-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:6px}
+.big-btn{
+  appearance:none;cursor:pointer;font-family:inherit;font-size:14.5px;font-weight:700;letter-spacing:1px;
+  border-radius:10px;padding:13px 22px;border:none;transition:filter .2s;
+}
+.big-btn.gold{color:#1a1408;background:linear-gradient(90deg,var(--gold),var(--gold-hi));box-shadow:0 6px 20px rgba(212,175,55,.3)}
+.big-btn.green{color:#04150d;background:linear-gradient(90deg,#1db57c,var(--green));box-shadow:0 6px 20px rgba(46,204,143,.3)}
+.big-btn.gray{color:var(--text-dim);background:#222229;border:1px solid var(--line-soft)}
+.big-btn:hover{filter:brightness(1.08)}
+.login-box{max-width:340px;margin:12vh auto auto;background:linear-gradient(180deg,#17171d,#0e0e12);border:1px solid var(--line);border-radius:16px;padding:32px 30px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.7)}
+.login-box h3{color:var(--gold-hi);font-size:17px;margin-bottom:18px;letter-spacing:1px}
+
+/* SECTION: responsive */
+@media (max-width:640px){
+  body{padding:20px 10px 40px}
+  header{padding:16px}
+  .notice,.maint,.tools,.hint,.products{margin-left:16px;margin-right:16px}
+  .stats{gap:12px}
+  .brand-name{font-size:15px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+
+    <!-- SECTION: header -->
+    <header>
+      <div class="brand">
+        <div class="brand-mark" id="brandMark">志</div>
+        <div>
+          <div class="brand-name">闲鱼：<em id="shopName">志盛科技</em></div>
+          <div class="brand-sub" id="shopSub">工具正版验证 · 永久免费更新</div>
+        </div>
+      </div>
+      <div class="stats">
+        <span class="stat"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle></svg>访问 <b id="visitCount">1,114</b></span>
+        <span class="stat"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"></path></svg>下载 <b id="dlCount">346</b></span>
+        <nav class="links">
+          <a id="linkService"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92V19a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 3.2 2 2 0 0 1 4.11 1h2.1a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>客服</a>
+          <a id="linkGroup"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="2" y="4" width="20" height="14" rx="2"></rect><path d="M8 21h8"></path></svg>售后群</a>
+          <a id="linkOnline"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>在线客服</a>
+          <a id="linkAdmin" class="admin-entry" title="后台管理" style="display: none;"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9c.14.5.56.87 1.09.9H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>管理</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- SECTION: notice -->
+    <div id="noticeBox"><div class="notice"><p>📢 公告：本网站和兑换码务必留好，这是唯一永久免费包更新凭证。</p><p>📌 注意切记：请勿将卡密分享或泄露给他人导致 ip 被封禁，失去宏功能和更新服务，得不偿失！</p></div></div>
+    <div id="maintBox"></div>
+
+    <!-- SECTION: tools -->
+    <div class="tools" id="toolRow"><button class="tool-btn"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>Todesk 远程下载</button><button class="tool-btn"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>bandizip</button><button class="tool-btn"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>geek 卸载工具</button><button class="tool-btn"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>正版验证</button></div>
+
+    <!-- SECTION: products -->
+    <p class="hint">点击下方按钮，输入兑换码验证后获取下载链接</p>
+    <div class="products" id="productRow"><div class="product"><div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><rect x="7" y="2.5" width="10" height="19" rx="5"></rect><path d="M12 6v4"></path></svg></div><div class="prod-name">普通精调密集版</div><p class="prod-desc">已更新真随机弹道数据</p><div class="ver-badge">v1.19 · 更新于 2026-9-5</div><button class="dl-btn" data-primary-action="open-code"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"></path></svg>立即下载（普通精调密集版）</button></div><div class="product"><div class="prod-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 2l8 3.5v6c0 5-3.4 8.7-8 10.5-4.6-1.8-8-5.5-8-10.5v-6L12 2z"></path><path d="M9 12l2 2 4-4"></path></svg></div><div class="prod-name">定制密集高级版</div><p class="prod-desc">闲鱼收货好评后免费送定制版兑换码！</p><div class="ver-badge">v1.8 · 更新于 2026-09-28</div><button class="dl-btn" data-primary-action="open-code"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"></path></svg>立即下载（闲鱼收货好评后免费送定制版兑换码！）</button></div></div>
+
+    <footer id="footerText">© 2026 志盛科技 验证系统</footer>
+  </div>
+</div>
+
+<!-- SECTION: modal -->
+<div class="overlay" id="overlay" role="dialog" aria-modal="true">
+  <div class="modal">
+    <button class="modal-close" id="modalClose" aria-label="关闭">✕</button>
+    <h3>🔑 请输入兑换码</h3>
+    <p class="ver">版本：<b id="modalVer">—</b></p>
+    <input class="code-input" id="codeInput" type="text" autocomplete="off" spellcheck="false" placeholder="例如 ZS-XXXX-XXXX" maxlength="40">
+    <button class="verify-btn" id="verifyBtn" data-primary-action="verify">验证兑换码</button>
+    <p class="msg" id="msg" aria-live="polite"></p>
+    <div class="unlock" id="unlock">
+      <button class="dl-final" id="dlFinal" data-primary-action="download">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"></path></svg>
+        点击下载 永久卡
+      </button>
+      <p class="meta">🗓 <b id="unlockName">永久卡</b>｜有效期至：<span id="unlockExpire">—</span></p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: admin-mount 后台面板挂载点（面板 HTML 与表单由脚本注入） -->
+<div id="adminMount"></div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* SECTION: core */
+var $ = function (id) { return document.getElementById(id); };
+var LS = {
+  get: function (k, d) { try { var v = localStorage.getItem(k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
+  set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} },
+  del: function (k) { try { localStorage.removeItem(k); } catch (e) {} }
+};
+var CFG_DEFAULT = JSON.parse($("site-config").textContent);
+var OVERRIDE_KEY = "zs_cfg_override_" + ((CFG_DEFAULT.meta && CFG_DEFAULT.meta.rev) || 0);
+var CFG = (function () {
+  var o = LS.get(OVERRIDE_KEY, null);
+  return (o && o.products) ? o : CFG_DEFAULT;
+})();
+
+function hashPass(s) { var h = 5381; for (var i = 0; i < s.length; i++) { h = (Math.imul(h, 33) + s.charCodeAt(i)) >>> 0; } return h >>> 0; }
+function checkPass(input) {
+  var m = CFG.meta;
+  if (m.passHash && m.passHash > 0) return hashPass(input) === m.passHash;
+  try { return input === atob(m.passB64 || ""); } catch (e) { return false; }
+}
+function todayStr() {
+  var d = new Date();
+  return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+}
+function isExpired(dateStr) { return !!dateStr && dateStr < todayStr(); }
+function esc(s) { return String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+
+var ICONS = {
+  mouse: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><rect x="7" y="2.5" width="10" height="19" rx="5"/><path d="M12 6v4"/></svg>',
+  keyboard: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/></svg>',
+  shield: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 2l8 3.5v6c0 5-3.4 8.7-8 10.5-4.6-1.8-8-5.5-8-10.5v-6L12 2z"/><path d="M9 12l2 2 4-4"/></svg>',
+  gear: '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.2 5.2l2.1 2.1M16.7 16.7l2.1 2.1M18.8 5.2l-2.1 2.1M7.3 16.7l-2.1 2.1"/></svg>'
+};
+var LINK_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>';
+var DL_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke-width="2.4"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>';
+
+/* SECTION: render 页面渲染（后台保存后调用 renderAll 即时预览） */
+function renderAll() {
+  document.title = CFG.meta.pageTitle;
+  $("shopName").textContent = CFG.meta.shopName;
+  $("brandMark").textContent = (CFG.meta.shopName || "志").slice(0, 1);
+  $("shopSub").textContent = CFG.meta.subtitle;
+  $("footerText").textContent = CFG.meta.footer;
+  $("linkAdmin").style.display = CFG.meta.adminEnabled ? "" : "none";
+
+  // 公告
+  var n = CFG.notice;
+  $("noticeBox").innerHTML = (n.enabled && n.lines && n.lines.length)
+    ? '<div class="notice">' + n.lines.map(function (l, i) {
+        return '<p>' + (i === 0 ? "📢 " : "📌 ") + esc(l) + '</p>';
+      }).join("") + '</div>'
+    : "";
+
+  // 维护模式
+  var mt = CFG.maintenance;
+  $("maintBox").innerHTML = (mt && mt.enabled)
+    ? '<div class="maint"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 9v4m0 4h.01M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>' + esc(mt.text) + '</span></div>'
+    : "";
+
+  renderTools();
+  renderProducts();
+  renderCounters();
+}
+
+function renderTools() {
+  var row = $("toolRow"); row.innerHTML = "";
+  (CFG.tools || []).forEach(function (t) {
+    var b = document.createElement("button");
+    b.className = "tool-btn";
+    b.innerHTML = LINK_SVG + esc(t.name);
+    b.addEventListener("click", function () {
+      if (CFG.maintenance && CFG.maintenance.enabled) { toast("维护模式已开启，暂停下载"); return; }
+      if (t.action === "verify") {
+        if (!CFG.products || !CFG.products.length) { toast("还没有产品，请在后台新增产品"); return; }
+        openModal(CFG.products[0]);
+      }
+      else if (t.url) { window.open(t.url, "_blank"); }
+      else { toast("「" + t.name + "」还没配置链接，可在后台填写"); }
+    });
+    row.appendChild(b);
+  });
+}
+
+function renderProducts() {
+  var row = $("productRow"); row.innerHTML = "";
+  (CFG.products || []).forEach(function (p) {
+    var m = CFG.maintenance && CFG.maintenance.enabled;
+    var badge = [p.version, p.updated ? "更新于 " + p.updated : ""].filter(Boolean).join(" · ");
+    var card = document.createElement("div");
+    card.className = "product";
+    card.innerHTML =
+      '<div class="prod-icon">' + (ICONS[p.icon] || ICONS.mouse) + '</div>' +
+      '<div class="prod-name">' + esc(p.name) + '</div>' +
+      '<p class="prod-desc">' + esc(p.desc) + '</p>' +
+      (badge ? '<div class="ver-badge">' + esc(badge) + '</div>' : '<div class="ver-badge">版本未标注</div>') +
+      '<button class="dl-btn" ' + (m ? "disabled" : "") + '>' + DL_SVG + esc(p.btnText || ("立即下载（" + p.name + "）")) + '</button>';
+    var btn = card.querySelector(".dl-btn");
+    btn.dataset.primaryAction = "open-code";
+    btn.addEventListener("click", function () {
+      if (m) { toast("维护模式已开启，暂停下载"); return; }
+      openModal(p);
+    });
+    row.appendChild(card);
+  });
+}
+
+function renderCounters() {
+  var visits = LS.get("zs_visits", 0) + 1;
+  LS.set("zs_visits", visits);
+  $("visitCount").textContent = ((CFG.counters.visitBase || 0) + visits).toLocaleString();
+  var dl = LS.get("zs_downloads", 0);
+  $("dlCount").textContent = ((CFG.counters.downloadBase || 0) + dl).toLocaleString();
+}
+
+/* SECTION: verify 兑换码验证（含单码独立有效期） */
+var current = null, verifiedCode = null;
+function openModal(p) {
+  current = p; verifiedCode = null;
+  $("modalVer").textContent = p.name + (p.version ? "（" + p.version + "）" : "");
+  $("codeInput").value = ""; $("codeInput").classList.remove("err");
+  $("msg").textContent = ""; $("msg").className = "msg";
+  $("unlock").classList.remove("show");
+  $("overlay").classList.add("open");
+  setTimeout(function () { $("codeInput").focus(); }, 60);
+}
+function closeModal() { $("overlay").classList.remove("open"); }
+
+$("verifyBtn").addEventListener("click", verify);
+$("codeInput").addEventListener("keydown", function (e) { if (e.key === "Enter") verify(); });
+function verify() {
+  if (!current) return;
+  var input = $("codeInput"), msg = $("msg");
+  var code = input.value.trim().toUpperCase();
+  if (!code) { input.classList.add("err"); msg.textContent = "请输入兑换码"; msg.className = "msg bad"; return; }
+  var hit = null;
+  (current.codes || []).forEach(function (c) { if (c.code.toUpperCase() === code) hit = c; });
+  if (!hit) {
+    input.classList.add("err");
+    msg.textContent = "❌ 兑换码无效或已被使用，请核对后重试";
+    msg.className = "msg bad"; $("unlock").classList.remove("show"); verifiedCode = null; return;
+  }
+  if (isExpired(hit.expire)) {
+    input.classList.add("err");
+    msg.textContent = "⛔ 该兑换码已于 " + hit.expire + " 到期，请联系客服续期";
+    msg.className = "msg bad"; $("unlock").classList.remove("show"); verifiedCode = null; return;
+  }
+  verifiedCode = hit;
+  input.classList.remove("err");
+  msg.textContent = "✅ 验证成功，请点击下载";
+  msg.className = "msg ok";
+  $("unlockName").textContent = "永久卡（" + current.name + "）";
+  $("unlockExpire").textContent = hit.expire ? hit.expire : (current.expire || "永久");
+  $("unlock").classList.add("show");
+}
+
+$("dlFinal").addEventListener("click", function () {
+  if (!current || !verifiedCode) return;
+  if (CFG.maintenance && CFG.maintenance.enabled) { toast("维护模式已开启，暂停下载"); return; }
+  LS.set("zs_downloads", LS.get("zs_downloads", 0) + 1);
+  renderCounters();
+  if (!current.url) { toast("下载地址未配置"); return; }
+  window.open(current.url, "_blank");
+});
+
+$("modalClose").addEventListener("click", closeModal);
+$("overlay").addEventListener("click", function (e) { if (e.target === $("overlay")) closeModal(); });
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") { closeModal(); if (typeof closeAdmin === "function") closeAdmin(); }
+});
+
+/* SECTION: contact 点击时实时读取配置，后台改完立即生效 */
+function bindContact(id, getVal, isUrl) {
+  $(id).addEventListener("click", function (e) {
+    e.preventDefault();
+    var v = getVal();
+    if (isUrl) { if (v) window.open(v, "_blank"); else toast("未配置链接"); return; }
+    if (!v) { toast("未配置该联系方式"); return; }
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(v).then(function () { toast("已复制：" + v); }).catch(function () { toast(v); });
+    } else { toast(v); }
+  });
+}
+
+var toastTimer = null;
+function toast(text) {
+  var t = $("toast"); t.textContent = text; t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function () { t.classList.remove("show"); }, 2600);
+}
+
+/* SECTION: boot */
+renderAll();
+bindContact("linkService", function () { return CFG.contact.service; }, false);
+bindContact("linkGroup", function () { return CFG.contact.group; }, false);
+bindContact("linkOnline", function () { return CFG.contact.online; }, true);
+
+/* 供后台管理模块使用 */
+window.ZS = {
+  CFG: CFG, CFG_DEFAULT: CFG_DEFAULT,
+  renderAll: renderAll, toast: toast, checkPass: checkPass, hashPass: hashPass,
+  OVERRIDE_KEY: OVERRIDE_KEY, LS: LS, esc: esc,
+  saveOverride: function (cfg) { LS.set(OVERRIDE_KEY, cfg); this.CFG = cfg; CFG = cfg; renderAll(); },
+  clearOverride: function () { LS.del(OVERRIDE_KEY); this.CFG = CFG_DEFAULT; CFG = CFG_DEFAULT; },
+  openAdmin: function () {}   // 由后台模块覆盖
+};
+</script>
+
+<!-- SECTION: admin-script 后台管理逻辑 -->
+<script>
+(function () {
+  var Z = window.ZS, esc = Z.esc, CFG = Z.CFG;
+  var mount = document.getElementById("adminMount");
+  var draft = JSON.parse(JSON.stringify(CFG));
+  var booted = false, authed = false;
+
+  function field(label, key, val, ph, type) {
+    return '<div class="fitem"><label>' + label + '</label><input class="field" data-k="' + key + '" type="' + (type || "text") + '" value="' + esc(val == null ? "" : val) + '" placeholder="' + esc(ph || "") + '"></div>';
+  }
+  function bind(scope) {
+    scope.querySelectorAll("[data-k]").forEach(function (el) {
+      el.addEventListener("input", function () {
+        var path = el.dataset.k.split(".");
+        var t = draft;
+        for (var i = 0; i < path.length - 1; i++) t = t[path[i]];
+        t[path[path.length - 1]] = el.type === "checkbox" ? el.checked : el.value;
+      });
+    });
+  }
+
+  function renderPanel() {
+    if (!document.getElementById("adminOverlay")) {
+      mount.innerHTML = '<div class="admin-overlay" id="adminOverlay"></div>';
+      var ov0 = document.getElementById("adminOverlay");
+      ov0.addEventListener("click", function (e) { if (e.target === ov0) closeAdmin(); });
+    }
+    var ov = document.getElementById("adminOverlay");
+    if (!authed) { ov.innerHTML = loginBox(); bindLogin(ov); return; }
+
+    var p = draft;
+    ov.innerHTML =
+      '<div class="admin-panel">' +
+      '<h2>⚙ 后台管理</h2>' +
+      '<div class="admin-tip">改完点 <b>保存并预览</b>，本页立即生效（只存在你这台电脑的浏览器里）。<br>要让客户看到新内容，点 <b>导出新网页</b>，把生成的文件重新上传或发给客户。</div>' +
+
+      '<div class="agroup"><h3>① 店铺与文案</h3>' +
+        '<div class="frow">' + field("店铺名", "meta.shopName", p.meta.shopName, "志盛科技") +
+        field("页面标题（浏览器标签）", "meta.pageTitle", p.meta.pageTitle, "志盛科技 · 工具下载验证站") + '</div>' +
+        '<div class="frow">' + field("头部副标题", "meta.subtitle", p.meta.subtitle, "工具正版验证 · 永久免费更新") +
+        field("页脚版权文字", "meta.footer", p.meta.footer, "© 2026 志盛科技 验证系统") + '</div>' +
+      '</div>' +
+
+      '<div class="agroup"><h3>② 公告栏</h3>' +
+        '<label class="check"><input type="checkbox" data-k="notice.enabled"' + (p.notice.enabled ? " checked" : "") + '>显示公告栏</label>' +
+        '<div class="fitem"><label>每条公告一行</label><textarea class="field" id="noticeLines" rows="3">' + esc((p.notice.lines || []).join("\n")) + '</textarea></div>' +
+      '</div>' +
+
+      '<div class="agroup"><h3>③ 维护模式（C）</h3>' +
+        '<label class="check"><input type="checkbox" data-k="maintenance.enabled"' + (p.maintenance.enabled ? " checked" : "") + '>开启维护模式（下载按钮变灰，弹窗与下载被拦截）</label>' +
+        '<div class="fitem"><label>维护提示文案</label><input class="field" data-k="maintenance.text" value="' + esc(p.maintenance.text) + '"></div>' +
+      '</div>' +
+
+      '<div class="agroup"><h3>④ 数字</h3>' +
+        '<div class="frow">' + field("访问数起始值", "counters.visitBase", p.counters.visitBase, "1024", "number") +
+        field("下载数起始值", "counters.downloadBase", p.counters.downloadBase, "300", "number") + '</div>' +
+        '<button class="mini-btn" id="resetCounts">把我这台机器的计数清零回起始值</button>' +
+      '</div>' +
+
+      '<div class="agroup"><h3>⑤ 客服入口</h3>' +
+        '<div class="frow">' + field("客服（点击复制的内容）", "contact.service", p.contact.service, "微信号 / QQ号") +
+        field("售后群（点击复制的内容）", "contact.group", p.contact.group, "售后群号：123456789") + '</div>' +
+        '<div class="frow">' + field("在线客服跳转链接（闲鱼店铺）", "contact.online", p.contact.online, "https://...") + '</div>' +
+      '</div>' +
+
+      '<div class="agroup"><h3>⑥ 功能按钮</h3><div id="toolList"></div>' +
+        '<button class="mini-btn" id="addTool">＋ 添加按钮</button></div>' +
+
+      '<div class="agroup"><h3>⑦ 产品与兑换码（A / F）</h3><div id="prodList"></div>' +
+        '<button class="mini-btn" id="addProd">＋ 新增产品卡片</button></div>' +
+
+      '<div class="agroup"><h3>⑧ 安全（E）</h3>' +
+        '<label class="check"><input type="checkbox" data-k="meta.adminEnabled"' + (p.meta.adminEnabled ? " checked" : "") + '>显示「管理」入口（发给客户的版本建议关闭）</label>' +
+        '<div class="frow">' + field("修改后台密码（留空不改）", "meta.newPass", "", "新密码，至少 4 位", "password") + '</div>' +
+      '</div>' +
+
+      '<div class="admin-actions">' +
+        '<button class="big-btn gold" id="btnSave" data-primary-action="admin-save">保存并预览</button>' +
+        '<button class="big-btn green" id="btnExport" data-primary-action="admin-export">导出新网页（发给客户）</button>' +
+        '<label class="check" style="align-self:center"><input type="checkbox" id="keepAdmin">导出时保留管理入口</label>' +
+        '<button class="big-btn gray" id="btnReset">恢复内置默认</button>' +
+        '<button class="big-btn gray" id="btnClose">关闭</button>' +
+      '</div></div>';
+
+    bind(ov);
+    document.getElementById("noticeLines").addEventListener("input", function () {
+      p.notice.lines = this.value.split("\n").map(function (s) { return s.trim(); }).filter(Boolean);
+    });
+    renderToolRows(); renderProdRows();
+
+    document.getElementById("addTool").onclick = function () { p.tools.push({ name: "新按钮", action: "link", url: "" }); renderToolRows(); };
+    document.getElementById("addProd").onclick = function () {
+      p.products.push({ id: "p" + Date.now(), name: "新产品", desc: "", icon: "mouse", version: "v1.0", updated: "", expire: "永久", url: "", btnText: "立即下载", codes: [] });
+      renderProdRows();
+    };
+    document.getElementById("resetCounts").onclick = function () { Z.LS.set("zs_visits", 0); Z.LS.set("zs_downloads", 0); Z.renderAll(); Z.toast("本机计数已清零"); };
+    document.getElementById("btnSave").onclick = save;
+    document.getElementById("btnExport").onclick = doExport;
+    document.getElementById("btnReset").onclick = function () {
+      if (!confirm("确定丢弃本机所有改动，恢复文件内置默认配置？")) return;
+      Z.clearOverride(); draft = JSON.parse(JSON.stringify(Z.CFG_DEFAULT)); Z.CFG = Z.CFG_DEFAULT; Z.renderAll(); renderPanel(); Z.toast("已恢复内置默认");
+    };
+    document.getElementById("btnClose").onclick = closeAdmin;
+  }
+
+  function renderToolRows() {
+    var box = document.getElementById("toolList"); box.innerHTML = "";
+    draft.tools.forEach(function (t, i) {
+      var d = document.createElement("div"); d.className = "item-row";
+      d.innerHTML = '<button class="rm" title="删除">✕</button>' +
+        '<div class="frow">' + field("按钮名称", "tools." + i + ".name", t.name) +
+        field("跳转链接", "tools." + i + ".url", t.url, "https://...") + '</div>';
+      bind(d);
+      d.querySelector(".rm").onclick = function () { draft.tools.splice(i, 1); renderToolRows(); };
+      box.appendChild(d);
+    });
+  }
+
+  function renderProdRows() {
+    var box = document.getElementById("prodList"); box.innerHTML = "";
+    draft.products.forEach(function (p, i) {
+      var d = document.createElement("div"); d.className = "item-row";
+      var codes = (p.codes || []).map(function (c, j) {
+        return '<div class="frow" style="margin-bottom:6px">' +
+          field("兑换码" + (j + 1), "products." + i + ".codes." + j + ".code", c.code, "ZS-XXXX-XXXX") +
+          field("该码有效期（留空用默认）", "products." + i + ".codes." + j + ".expire", c.expire, "2027-09-21") +
+          '<button class="mini-btn danger" data-rm="' + j + '" style="align-self:flex-end">删</button></div>';
+      }).join("");
+      d.innerHTML = '<button class="rm" title="删除该产品">✕</button>' +
+        '<div class="frow">' + field("产品名称", "products." + i + ".name", p.name) +
+        field("一句话说明", "products." + i + ".desc", p.desc) + '</div>' +
+        '<div class="frow">' + field("版本号（D）", "products." + i + ".version", p.version, "v2.3") +
+        field("更新日期（D）", "products." + i + ".updated", p.updated, "2026-10-05") + '</div>' +
+        '<div class="frow">' + field("默认有效期", "products." + i + ".expire", p.expire, "永久 或 日期") +
+        field("下载地址", "products." + i + ".url", p.url, "https://...") + '</div>' +
+        '<div class="frow">' + field("下载按钮文字", "products." + i + ".btnText", p.btnText, "立即下载（xxx版）") + '</div>' +
+        '<div class="fitem"><label>图标</label><select class="field" data-k="products.' + i + '.icon">' +
+          [["mouse", "鼠标"], ["keyboard", "键盘"], ["shield", "盾牌"], ["gear", "齿轮"]].map(function (o) {
+            return '<option value="' + o[0] + '"' + (p.icon === o[0] ? " selected" : "") + '>' + o[1] + '</option>';
+          }).join("") + '</select></div>' +
+        '<label style="font-size:12px;color:var(--text-dim);display:block;margin-top:10px">兑换码列表（A：每码可设独立有效期）</label>' +
+        codes + '<button class="mini-btn" data-addc>＋ 添加兑换码</button>';
+      bind(d);
+      d.querySelector(".rm").onclick = function () { if (confirm("删除产品「" + p.name + "」？")) { draft.products.splice(i, 1); renderProdRows(); } };
+      d.querySelector("[data-addc]").onclick = function () { p.codes = p.codes || []; p.codes.push({ code: "", expire: "" }); renderProdRows(); };
+      d.querySelectorAll("[data-rm]").forEach(function (b) { b.onclick = function () { p.codes.splice(+b.dataset.rm, 1); renderProdRows(); }; });
+      box.appendChild(d);
+    });
+  }
+  /* SECTION: admin-part2 */
+  function loginBox() {
+    return '<div class="login-box"><h3>🔒 后台管理</h3>' +
+      '<input class="code-input" id="pwInput" type="password" placeholder="请输入后台密码" autocomplete="off">' +
+      '<button class="verify-btn" id="pwOk">进入后台</button><p class="msg" id="pwMsg"></p>' +
+      '<button class="mini-btn" id="pwCancel" style="margin-top:16px">取消</button></div>';
+  }
+  function bindLogin(ov) {
+    var input = document.getElementById("pwInput"), msg = document.getElementById("pwMsg");
+    function tryIn() {
+      if (Z.checkPass(input.value)) { authed = true; renderPanel(); }
+      else { input.classList.add("err"); msg.textContent = "密码错误"; msg.className = "msg bad"; }
+    }
+    document.getElementById("pwOk").onclick = tryIn;
+    input.addEventListener("keydown", function (e) { if (e.key === "Enter") tryIn(); });
+    document.getElementById("pwCancel").onclick = closeAdmin;
+    setTimeout(function () { input.focus(); }, 60);
+  }
+
+  function applyPass(cfg) {
+    if (cfg.meta.newPass && cfg.meta.newPass.length >= 4) { cfg.meta.passHash = Z.hashPass(cfg.meta.newPass); cfg.meta.passB64 = ""; }
+    cfg.meta.newPass = "";
+  }
+  function save() {
+    var np = draft.meta.newPass;
+    if (np && np.length < 4) { Z.toast("密码至少 4 位，本次未修改密码"); draft.meta.newPass = ""; }
+    applyPass(draft);
+    draft.counters.visitBase = parseInt(draft.counters.visitBase, 10) || 0;
+    draft.counters.downloadBase = parseInt(draft.counters.downloadBase, 10) || 0;
+    Z.saveOverride(JSON.parse(JSON.stringify(draft)));
+    Z.toast("已保存，本页已实时更新");
+    renderPanel();
+  }
+
+  function doExport() {
+    var keep = document.getElementById("keepAdmin").checked;
+    var out = JSON.parse(JSON.stringify(draft));
+    applyPass(out);
+    out.meta.rev = Date.now();   // 换新版本号，避免本机旧改动覆盖导出文件的内容
+    if (!keep) out.meta.adminEnabled = false;
+    var doc = document.documentElement.cloneNode(true);
+    var cfgEl = doc.querySelector("#site-config");
+    cfgEl.textContent = JSON.stringify(out, null, 2).replace(/<\//g, "<\\/");
+    var am = doc.querySelector("#adminMount"); if (am) am.innerHTML = "";
+    doc.querySelectorAll(".overlay.open").forEach(function (e) { e.classList.remove("open"); });
+    var ts = doc.querySelector(".toast"); if (ts) { ts.className = "toast"; ts.textContent = ""; }
+    var blob = new Blob(["<!DOCTYPE html>\n" + doc.outerHTML], { type: "text/html;charset=utf-8" });
+    var a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "志盛科技工具站.html";
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 8000);
+    Z.toast(keep ? "已导出（含管理入口）：请自己留存这份" : "已导出：这个文件直接发给客户 / 上传即可生效");
+  }
+
+  function openAdmin() {
+    draft = JSON.parse(JSON.stringify(Z.CFG));
+    renderPanel();
+    booted = true;
+    var ov = document.getElementById("adminOverlay");
+    if (ov) ov.classList.add("open");
+    if (!authed) setTimeout(function () { var i = document.getElementById("pwInput"); if (i) i.focus(); }, 80);
+  }
+  function closeAdmin() { var ov = document.getElementById("adminOverlay"); if (ov) ov.classList.remove("open"); }
+
+  var linkA = document.getElementById("linkAdmin");
+  if (linkA) linkA.addEventListener("click", function (e) { e.preventDefault(); openAdmin(); });
+
+  // 隐藏入口：连点店铺名 5 次打开后台（关闭管理入口后仍能进来）
+  var brand = document.querySelector(".brand"), taps = 0, tapTimer = null;
+  if (brand) brand.addEventListener("click", function () {
+    taps++;
+    clearTimeout(tapTimer);
+    tapTimer = setTimeout(function () { taps = 0; }, 1600);
+    if (taps >= 5) { taps = 0; openAdmin(); }
+  });
+  window.closeAdmin = closeAdmin;
+  Z.openAdmin = openAdmin;
+})();
+</script>
+
+
+</body></html>
